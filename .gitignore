@@ -1,0 +1,6 @@
+
+.venv
+.docker
+docker/
+venv/
+.env
