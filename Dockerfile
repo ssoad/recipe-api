@@ -5,14 +5,19 @@ LABEL maintainer="Sohanuzzaman Soad"
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
 
+ARG DEV=false
 # Install dependencies
 RUN python -m venv /opt/venv && \
     /opt/venv/bin/pip install --upgrade pip && \
     /opt/venv/bin/pip install -r /tmp/requirements.txt && \
+    if [ $DEV = "true" ]; \
+        then /opt/venv/bin/pip install -r /tmp/requirements.dev.txt; \
+    fi && \
     rm -rf /tmp && \
     adduser \
     --disabled-password \
