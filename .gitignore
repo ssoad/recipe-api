@@ -4,3 +4,13 @@
 docker/
 venv/
 .env
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+app/__pycache__/
+app/*/__pycache__/
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+
